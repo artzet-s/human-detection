@@ -36,7 +36,7 @@ def video_to_frames(path, output_dir="frames", verbose=True):
         print("Extraction done, with a total of {} frames saved in \"{}\" folder".format(
             i_frame, output_dir))
 
-def frames_to_video(frame_dir, output_name="project.avi", fps=25):
+def frames_to_video(frame_dir, output_name="output_video.mp4", fps=25):
 
     img_array = []
     filenames = glob.glob(os.path.join(frame_dir, "*"))
