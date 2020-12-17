@@ -59,7 +59,6 @@ def frames_to_video(frame_dir,
         size = (width, height)
         img_array.append(img)
     
-    
     out = cv2.VideoWriter(
         video_filename,
         cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
