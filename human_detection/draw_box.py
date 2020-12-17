@@ -1,3 +1,8 @@
+# -*- python -*-
+#
+#       Copyright 2020 - SIMON ARTZET
+#
+# ==============================================================================
 import cv2
 import os
 import os.path
@@ -7,6 +12,17 @@ def draw_box(image,
              relative_coordinates, 
              box_color=(0, 0, 255),
              box_thickness=3):
+  """Draw box on the image according relative coordinate
+
+  Args:
+      image (numpy array): image 
+      relative_coordinates (dict): dict(center_x, center_y, width, height) in relative image coordinates
+      box_color (tuple, optional): color of the box. Defaults to (0, 0, 255).
+      box_thickness (int, optional): thickness of the box. Defaults to 3.
+
+  Returns:
+      numpy array: image with the box drawed 
+  """
 
   rc = relative_coordinates
 
@@ -37,6 +53,15 @@ def draw_person_box_on_frames(result_filename,
                               confidence=0.20,
                               box_color=(0, 0, 255),
                               box_thickness=3):
+  """draw box on the images according json file predictions coordinate 
+
+  Args:
+      result_filename ([str]): json prediction file
+      output_dir (str): output directory where are saved images 
+      confidence (float, optional): minimum confidence value for draw perso box. Defaults to 0.20.
+      box_color (tuple, optional): color of the box. Defaults to (0, 0, 255).
+      box_thickness (int, optional): thickness of the box. Defaults to 3.
+  """
   
   with open(result_filename) as f:
     data = json.load(f)

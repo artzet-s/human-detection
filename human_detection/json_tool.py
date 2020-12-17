@@ -1,9 +1,21 @@
+# -*- python -*-
+#
+#       Copyright 2020 - SIMON ARTZET
+#
+# ==============================================================================
 import os
 import os.path
 import json
 import glob
 
 def labels_dir_to_json(frames_dir, labels_dir, json_result):
+  """Transform labels predictions (in labels_dir) of frames_dir to a json YOLO format
+
+  Args:
+      frames_dir (str): frames directory
+      labels_dir (str): labes directory
+      json_result (str): output json file
+  """
 
   classes_cvt = {0: "person"}
 

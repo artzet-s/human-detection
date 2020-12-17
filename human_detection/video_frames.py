@@ -1,3 +1,8 @@
+# -*- python -*-
+#
+#       Copyright 2020 - SIMON ARTZET
+#
+# ==============================================================================
 import argparse
 import cv2
 import os
@@ -5,7 +10,13 @@ import glob
 
 
 def video_to_frames(path, output_dir="frames", verbose=True):
+    """Transform video to images frames
 
+    Args:
+        path (str): filename of the video
+        output_dir (str, optional): [description]. Defaults to "frames".
+        verbose (bool, optional): [description]. Defaults to True.
+    """
     cap = cv2.VideoCapture(path)
     
     if not os.path.exists(output_dir):
@@ -37,6 +48,12 @@ def video_to_frames(path, output_dir="frames", verbose=True):
         
 
 def write_txt_list_of_filename(input_dir, filename):
+    """Write list of file in input_dir to filename txt file
+
+    Args:
+        input_dir (str): directory location
+        filename (str): txt filename output
+    """
 
   filenames = glob.glob(os.path.join(input_dir, "*"))
   str_filenames = '\n'.join(filenames)
@@ -48,6 +65,13 @@ def write_txt_list_of_filename(input_dir, filename):
 def frames_to_video(frame_dir, 
                     video_filename="output_video.mp4", 
                     fps=25):
+    """Transform frames to video
+
+    Args:
+        frame_dir (str): frame directory location
+        video_filename (str, optional): output video filename. Defaults to "output_video.mp4".
+        fps (int, optional): Frame per seconds. Defaults to 25.
+    """
 
     img_array = []
     filenames = glob.glob(os.path.join(frame_dir, "*.jpg"))
