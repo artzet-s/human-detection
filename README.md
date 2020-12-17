@@ -52,6 +52,7 @@ To reproduce the result, you can follow the specified notebook :
 
 * Models comparison : https://colab.research.google.com/drive/1AdHsK9sIvwVtTpXm0LlrTD6enwQwRdMd?usp=sharing
 
+There are also saved locally in the notebook directory.
 
 ## Appendix : Methodology history
 
@@ -141,10 +142,8 @@ Bounding box prediction on save on json format (darknet format) in predictions d
         * Raw result : https://youtu.be/vNYbKrATUwY
         * Don't improve difficult case as expected  
     * Improve small images with VideoSuperResolution model
-        * WIP
+        * WIP - Google Collab GPU limit exceed ...
 
 * Post processing :
     * Track person box according image part similarity
     * Merge person box along the video
-
-
