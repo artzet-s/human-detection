@@ -100,10 +100,10 @@ Bounding box prediction on save on json format (darknet format) in predictions d
 
 * Create manual reference bouding box from "YOLOv5x prediction" initialization  : 
     * build use : https://www.makesense.ai/
-    * "predictions/ref.json"
+    * Result : predictions/ref.json
     * https://youtu.be/CGyuHgEWQgc
 
-* Notebook for comparing : https://colab.research.google.com/drive/1AdHsK9sIvwVtTpXm0LlrTD6enwQwRdMd?usp=sharing
+* Notebook for comparing models : https://colab.research.google.com/drive/1AdHsK9sIvwVtTpXm0LlrTD6enwQwRdMd?usp=sharing
 
 
 |        name              | confidence | precision | recall | mAP  |  F1  |
