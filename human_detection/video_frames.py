@@ -55,12 +55,12 @@ def write_txt_list_of_filename(input_dir, filename):
         filename (str): txt filename output
     """
 
-  filenames = glob.glob(os.path.join(input_dir, "*"))
-  str_filenames = '\n'.join(filenames)
+    filenames = glob.glob(os.path.join(input_dir, "*"))
+    str_filenames = '\n'.join(filenames)
 
-  file = open(filename, 'w')
-  file.write(str_filenames)
-  file.close()
+    file = open(filename, 'w')
+    file.write(str_filenames)
+    file.close()
 
 def frames_to_video(frame_dir, 
                     video_filename="output_video.mp4", 
