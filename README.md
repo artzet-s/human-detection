@@ -6,11 +6,11 @@ Exemple video : https://youtu.be/h4s0llOpKrU
 
 [![MISS DIOR – The new Eau de Parfum](https://img.youtube.com/vi/h4s0llOpKrU/0.jpg)](https://youtu.be/h4s0llOpKrU)
 
-# Best results: 
+# Exemple result : 
 
-* **YOLOv4-mish** : https://youtu.be/Ig7cP4zXzzA
+* Best prediction : **YOLOv4-mish** : **https://youtu.be/Ig7cP4zXzzA**
 
-Low confidence is choose according law FP in person dectetion class.
+Low confidence is choose according low false positive detection for person class.
 
 |        name              | confidence | precision | recall | mAP  |  F1  |
 | -------------------------| ---------- | --------- | ------ | ---- | ---- |
@@ -24,64 +24,7 @@ Low confidence is choose according law FP in person dectetion class.
 | yolov5l_result.json	   | 0.25	    | 0.94	    | 0.85	 | 0.84	| 0.89 |
 | yolov5x_result.json	   | 0.25	    | 0.93	    | 0.84	 | 0.84	| 0.88 |
 
-# How to reproduce result
-
-## 1. Computing ressources
-
-All experimentation was done with Jupiter notebook on Google Colab or Kaggle platform :
-
-* https://colab.research.google.com/
-* https://www.kaggle.com/
-
-## 2. Prerequies
-
-
-* youtube-dl - https://github.com/ytdl-org/youtube-dl
-* YOLOv4 - https://github.com/AlexeyAB/darknet
-* YOLOv5 - https://github.com/ultralytics/yolov5 
-* python
-    * opencv
-    * numpy
-    * pytorch
-    * tensorflow
-
-
-## 3. Prepare the data 
-
-### 3.1 Download video
-
-After installed youtube-dl following their documentation (https://github.com/ytdl-org/youtube-dl) use it to download the best quality video :
-
-    #Check available video quality
-    youtube-dl -F https://youtu.be/h4s0llOpKrU
-
-    #Download the specific video
-    youtube-dl -f 137 https://youtu.be/h4s0llOpKrU  -o input_video.mp4
-
-#### 3.2 Extract video frames
-
-Use scrit video_to_frames.py to extract video frames
-
-    # python video_to_frames.py -h for any help
-    python video_to_frames.py input_video.mp4
-
-## 2. Use Deep learning models to detect person in frame video
-
-### 2.1 Use to test & compare several models
-
-How reproduce my results:
-
-* YOLOv3 and YOLOv4* models: https://colab.research.google.com/drive/13UpMnnmudRjPLaX28ScF2LUKpnPcK4WY?usp=sharing
-
-* YOLOv5* models : https://colab.research.google.com/drive/1DiHBjmMgDm6GzGXzp1d6HCZksA_itIdy?usp=sharing
-
-* Make models comparison : https://colab.research.google.com/drive/1AdHsK9sIvwVtTpXm0LlrTD6enwQwRdMd?usp=sharing
-
-My result :
-
-Best prediction : **YOLOv4-mish** : **https://youtu.be/Ig7cP4zXzzA**
-
-Ref : https://youtu.be/CGyuHgEWQgc
+* Ref : https://youtu.be/CGyuHgEWQgc
 
 Other results : 
 
@@ -93,6 +36,22 @@ Other results :
 * YOLOv5m : https://youtu.be/rFVeZWtG8I4
 * YOLOv5s : https://youtu.be/5rk6XmB6lv4
 * YOLOv5x : https://youtu.be/pjhPIMEefxw
+
+
+# How to reproduce result
+
+Note : All the experimentation was done under colab research notebook.
+
+## Reproduce online with Colab Research Notebook (Open Acces)
+
+To reproduce the result, you can follow the specified notebook :
+
+* YOLOv3 and YOLOv4* models: https://colab.research.google.com/drive/13UpMnnmudRjPLaX28ScF2LUKpnPcK4WY?usp=sharing
+
+* YOLOv5* models : https://colab.research.google.com/drive/1DiHBjmMgDm6GzGXzp1d6HCZksA_itIdy?usp=sharing
+
+* Models comparison : https://colab.research.google.com/drive/1AdHsK9sIvwVtTpXm0LlrTD6enwQwRdMd?usp=sharing
+
 
 ## Appendix : Methodology history
 
@@ -158,3 +117,34 @@ Bounding box prediction on save on json format (darknet format) in predictions d
 | yolov4_result.json	   | 0.25	    | 0.94	    | 0.87	 | 0.87	| 0.90 |
 | yolov5l_result.json	   | 0.25	    | 0.94	    | 0.85	 | 0.84	| 0.89 |
 | yolov5x_result.json	   | 0.25	    | 0.93	    | 0.84	 | 0.84	| 0.88 |
+
+### 6. Difficult case 
+
+#### Case 1 : Under water view
+
+![Difficult case 1](/doc/211.jpg "Under water view")
+
+#### Case 2 : Top view
+
+![Difficult case 2](/doc/736.jpg "Top view")
+
+#### Case 3 : Distant view
+
+![Difficult case 3](/doc/833.jpg "Distant view")
+
+#### Prototype - Conceivable solution
+
+* Augment image resolution :
+    * Split the image into (24) small ones and make prediction from them :
+        * Take very long time (1 hour) to process
+        * Notebook : https://colab.research.google.com/drive/1CHCEzLOPO-TBysDNVSLHEZdOvPm2C3CQ?usp=sharing
+        * Raw result : https://youtu.be/vNYbKrATUwY
+        * Don't improve difficult case as expected  
+    * Improve small images with VideoSuperResolution model
+        * WIP
+
+* Post processing :
+    * Track person box according image part similarity
+    * Merge person box along the video
+
+
