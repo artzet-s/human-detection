@@ -1,6 +1,7 @@
 import cv2
 import os
 import os.path
+import json
 
 def draw_box(image, 
              relative_coordinates, 
